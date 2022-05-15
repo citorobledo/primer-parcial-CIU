@@ -1,0 +1,29 @@
+.contenedor2{
+    background:  #2D2371 ;
+    color: #ffff;
+    padding: 4px;
+    border: 2px solid #3E376E ;
+  }
+div.contenedor{
+    background: #605E67;
+    border: 2px solid #3E376E ;
+    padding-left: 2px;
+    color: #ffff;
+    
+  }
+.boton{
+  background: #605E67 ;
+  color: #ffff;
+  padding: 1px;
+  border: 2px solid #3E376E ;
+  
+}
+.serie{
+    display: none;
+
+}
+.oculto{
+    border: 3px solid #948FB0 ;
+    ;
+}
+  
