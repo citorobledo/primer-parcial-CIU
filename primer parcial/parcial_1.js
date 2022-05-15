@@ -11,7 +11,14 @@ const modal2 = document.querySelector("#modal2");
 const btnEditarSerie = document.querySelector("#btn-editarSerie");
 const btnCancelar2 = document.querySelector("#btn-cancelar2");
 
-//var buscar = document.getElementById("buscarSerie").value;
+function validarNumero(numero) {
+  if (numero < 1 || !Number.isInteger(numero) ) {
+    alert("El numero debe ser entero mayor a 0");
+  }
+  else { 
+    return numero;
+  }
+}
 
 
 class Serie {
@@ -44,8 +51,13 @@ function creaFilaDeSerie(serie= Serie) {
 }
 function crearSerieDesdeHTML() {
   let nombre = document.getElementById("iNombre").value;
-  let temporadas = document.getElementById("iTemp").value;
-  crearSerie(nombre,temporadas);
+  let temporadas = validarNumero(parseInt(document.getElementById("iTemp").value));
+  if (temporadas == undefined) {
+    alert("la serie no se ha creado");
+  }
+  else {
+    crearSerie(nombre, temporadas);
+  }
 }
 function actualizarSerieFront() {
   document.getElementById(serieSeleccionada.id).children[1].innerText = serieSeleccionada.nombre;
@@ -73,10 +85,15 @@ btnEditar.addEventListener("click", ()=>{
 });
 btnEditarSerie.addEventListener("click", ()=>{
   let nombre = document.getElementById("iNombre2").value;
-  let temporadas = document.getElementById("iTemp2").value;
-  let vistas = document.getElementById("iVistas").value;
-  actualizarSerieBack(nombre,temporadas,vistas);
-  actualizarSerieFront()
+  let temporadas = parseInt(document.getElementById("iTemp2").value);
+  let vistas = validarNumero(parseInt(document.getElementById("iVistas").value));
+  if (temporadas == undefined || vistas == undefined) {
+    alert("No se edito la serie");
+  }
+  else {
+    actualizarSerieBack(nombre,temporadas ,vistas );
+    actualizarSerieFront()
+  }
   modal2.close();
 });
 btnCancelar2.addEventListener("click", ()=>{
@@ -112,8 +129,9 @@ function seleccionarSerie() {
   };
 
 function modificaTempVistas(cantidad) {
+  let maxTemp = serieSeleccionada.temporadas;
   let nuevaCantidad = parseInt(serieSeleccionada.tempVistas) + cantidad;
-  if (serieSeleccionada != undefined && nombreIngresado == serieSeleccionada.nombre ) { 
+  if (serieSeleccionada != undefined && nombreIngresado == serieSeleccionada.nombre && nuevaCantidad >= 0 && nuevaCantidad <= maxTemp){ 
     actualizarSerieBack(serieSeleccionada.nombre,serieSeleccionada.temporadas,nuevaCantidad );
     actualizarSerieFront();
   }
