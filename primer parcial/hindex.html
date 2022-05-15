@@ -18,7 +18,7 @@
                   <h2>Tus Series</h2>
               </div>
               <div class="col-0 d-flex p-1 ">
-                  <i class="bi bi-x-square-fill"></i>
+                  <i class="bi bi-x-square-fill" type="button" onclick="window.close()"></i>
               </div>
         </div>
     
@@ -68,7 +68,7 @@
                     <h2>Crear Serie</h2>
                 </div>
                 <div class="col-0 d-flex p-1 ">
-                    <i class="bi bi-x-square-fill" type="button" id="cerrarVentana"></i>
+                    <i class="bi bi-x-square-fill" type="button" id="cerrarVentana" onclick="modal.close()"></i>
                 </div>
           </div>
           <form method="dialog">  
@@ -107,7 +107,7 @@
                     <h2>Editar Serie</h2>
                 </div>
                 <div class="col-0 d-flex p-1 ">
-                    <i class="bi bi-x-square-fill"></i>
+                    <i class="bi bi-x-square-fill" type="button" onclick="modal2.close()"></i>
                 </div>
           </div>
           <form method="dialog">  
@@ -160,11 +160,6 @@
 </body>
 </html>
 <!--
-Requerimiento 1 (5 puntos)
-    La aplicación tiene una ventana con las siguientes características:
-    ● Muestra una tabla de series con nombre, cantidad de temporadas totales y
-    cantidad de temporadas vistas. *****listo****
-    ● Tiene botones para aumentar y disminuir la cantidad de temporadas vistas de
-    la serie seleccionada (“+” y “-” en la figura).
-    ● Permite buscar por nombre de serie.
+para seleccionar una serie en la tabla se debe buscar la serie por el nombre.
+no pude hacerlo con un click sobre el nombre.
 -->
