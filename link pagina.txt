@@ -1,0 +1,6 @@
+
+pagina
+https://primer-parcial-ciu.netlify.app
+
+repositorio git
+https://github.com/citorobledo/primer-parcial-CIU/tree/main/primer%20parcial

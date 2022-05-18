@@ -12,19 +12,19 @@
 </head>
 <body onload = "scriptSeries ()">
   
-    <div class="container-flex contenedor">     
-        <div class="row-8 d-flex contenedor2 ">
+    <div class="container-flex contenedor">      
+        <header class="row-8 d-flex contenedor2 ">
               <div class="col d-flex p-1">
                   <h2>Tus Series</h2>
               </div>
               <div class="col-0 d-flex p-1 ">
                   <i class="bi bi-x-square-fill" type="button" onclick="window.close()"></i>
               </div>
-        </div>
+            </header>
     
-        <div class="row-2 align-items-center  d-flex input-group p-1 contenedor">
+        <div class="row-2 align-items-center  d-flex input-group p-1 contenedor" >
             <input id= "iID" class=" col p-1 "type="text" class="form-control" placeholder="Nombre De Serie" >
-            <button class="col-2 btn btn-secondary " id="buscar" onclick = seleccionarSerie()> <i class="bi bi-search"> 
+            <button class="col-2 btn btn-secondary " id="buscar" type="button"> <i class="bi bi-search"  > 
                 Buscar </i> </button>
         </div>  
       
@@ -50,8 +50,8 @@
 
         <div class= " grid d-flex contenedor2  justify-content-between"> <!--botones del final-->
           <div class="col-2   d-flex">
-            <button class=" col-3 btn btn-secondary boton " type="button" id="sumar" onclick = modificaTempVistas(1)>+</button>
-            <button class=" col-3 btn btn-secondary boton " type="button" id="restar" onclick = modificaTempVistas(-1)>-</button>
+            <button class=" col-3 btn btn-secondary boton " type="button" id="sumar" >+</button>
+            <button class=" col-3 btn btn-secondary boton " type="button" id="restar" >-</button>
           </div>
 
 

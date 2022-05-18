@@ -1,7 +1,6 @@
 var idSerie = 1;
 var listaDeSeries = []
 var serieSeleccionada = undefined;
-var nombreIngresado = "";
 const btnCrear = document.querySelector("#btn-crear");
 const btnCrearSerie = document.querySelector("#btn-crearSerie");
 const btnEditar = document.querySelector("#btn-editar");
@@ -10,6 +9,11 @@ const modal = document.querySelector("#modal");
 const modal2 = document.querySelector("#modal2");
 const btnEditarSerie = document.querySelector("#btn-editarSerie");
 const btnCancelar2 = document.querySelector("#btn-cancelar2");
+const btnBuscar = document.querySelector("#buscar");
+const btnSumar = document.querySelector("#sumar");
+const btnRestar = document.querySelector("#restar");
+
+
 
 function validarNumero(numero) {
   if (numero < 1 || !Number.isInteger(numero) ) {
@@ -35,6 +39,9 @@ function crearSerie(nombre,temporadas){
     let serie = new Serie(nombre,temporadas);
     listaDeSeries.push(serie);
     creaFilaDeSerie(serie);
+    document.getElementById(serie.id).addEventListener("click", ()=>{
+      seleccionarSerie(nombre);
+    });
     idSerie++;
 };
 function creaFilaDeSerie(serie= Serie) {
@@ -68,18 +75,18 @@ function actualizarSerieBack(nombre,temporadas,vistas) {
   serieSeleccionada.temporadas = temporadas;
   serieSeleccionada.tempVistas = vistas;
 };
-function seleccionarSerie() {
-  nombreIngresado = document.getElementById("iID").value;
-  if (serieSeleccionada != undefined) {
+function seleccionarSerie(nombre) {
+  //nombreIngresado = document.getElementById("iID").value;
+  if (serieSeleccionada != undefined) {   //--si habia una serie seleccionada, a borra--
     document.getElementById(serieSeleccionada.id).classList.add("contenedor");
   };
-  if (nombreIngresado == "") {
+  if (nombre == "") {
     serieSeleccionada = undefined;
     alert("No se ha ingresado ningun nombre");
   };
 
   listaDeSeries.forEach(serie => {
-    if (serie.nombre == nombreIngresado) {
+    if (serie.nombre == nombre) {
       serieSeleccionada = serie;
       document.getElementById(serieSeleccionada.id).classList.toggle("contenedor")
     }
@@ -91,13 +98,24 @@ function seleccionarSerie() {
 function modificaTempVistas(cantidad) {
   let maxTemp = serieSeleccionada.temporadas;
   let nuevaCantidad = parseInt(serieSeleccionada.tempVistas) + cantidad;
-  if (serieSeleccionada != undefined && nombreIngresado == serieSeleccionada.nombre && nuevaCantidad >= 0 && nuevaCantidad <= maxTemp){ 
+  if (serieSeleccionada != undefined && nuevaCantidad >= 0 && nuevaCantidad <= maxTemp){ 
     actualizarSerieBack(serieSeleccionada.nombre,serieSeleccionada.temporadas,nuevaCantidad );
     actualizarSerieFront();
   }
 };
 // ---------- Eventos --------------------
 
+btnSumar.addEventListener("click", function(){
+  modificaTempVistas(1);
+});
+btnRestar.addEventListener("click", function(){
+  modificaTempVistas(-1);
+});
+
+
+btnBuscar.addEventListener("click", () => {
+seleccionarSerie(document.getElementById("iID").value)
+});
 btnCrear.addEventListener("click", ()=>{
   modal.showModal();
 });
